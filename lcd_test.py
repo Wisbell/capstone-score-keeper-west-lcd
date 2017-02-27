@@ -179,13 +179,13 @@ def main():
 
   pi_game = db.child("currentGames").order_by_child("pi").equal_to(True).stream(stream_handler)
 
+  # allow the raspberry to connect to firebase
+  time.sleep(3)
+  
   # Initialise display
   lcd_init()
 
   while True:
-
-    #cool_data = "what"
-    #print("test cool data", cool_data)
 
     # Send some test
     #lcd_string("Created by         <",LCD_LINE_1)
@@ -197,15 +197,24 @@ def main():
     #lcd_string("> Tutorial Url:",LCD_LINE_1)
     #lcd_string("> http://osoyoo.com",LCD_LINE_2)
 
-    time.sleep(3)
+    #time.sleep(3)
 
+    # my code below
+    
     #lcd_string("Hey         <",LCD_LINE_1)
     #lcd_string("Test        <",LCD_LINE_2)
 
-    lcd_string(state_dict[state_key]['team1Name'], LCD_LINE_1)
-    lcd_string(state_dict[state_key]['team2Name'], LCD_LINE_2)
+    lcd_string(state_dict[state_key]['team1Name'] + ">", LCD_LINE_1)
+    lcd_string(str(state_dict[state_key]['team1Points']) + ">", LCD_LINE_2)
 
-    #time.sleep(3)
+    time.sleep(3)
+    #lcd_string(" ", LCD_LINE_1)
+    #time.sleep(2)
+    
+    lcd_string(state_dict[state_key]['team2Name'] + ">", LCD_LINE_1)
+    lcd_string(str(state_dict[state_key]['team2Points']) + ">", LCD_LINE_2)
+
+    time.sleep(3)
 
     #print("game_info", state_dict[state_key]['team1Name'])
     #print("state", current_state)

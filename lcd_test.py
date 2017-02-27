@@ -213,13 +213,47 @@ def main():
 
     #time.sleep(3)
 
-    # no sleep display
+        # no sleep display
     #lcd_string(state_dict[state_key]['team1Name'] + " > " + str(state_dict[state_key]['team1Points']) , LCD_LINE_1)
     team1Points = str(state_dict[state_key]['team1Points'])
     team2Points = str(state_dict[state_key]['team2Points'])
+    winningScore = state_dict[state_key]['winningScore']
 
-    lcd_string(state_dict[state_key]['team1Name'] + " > " + team1Points, LCD_LINE_1)
-    lcd_string(state_dict[state_key]['team2Name'] + " > " + team2Points, LCD_LINE_2)
+    #lcd_string(state_dict[state_key]['team1Name'] + " > " + team1Points, LCD_LINE_1)
+    #lcd_string(state_dict[state_key]['team2Name'] + " > " + team2Points, LCD_LINE_2)
+
+    #time.sleep(2)
+    #print(team1Points)
+    #print(team2Points)
+    #print(winningScore)
+
+    if team1Points == winningScore:
+        #print("team 1 one won")
+        lcd_string("We have a winner!", LCD_LINE_1)
+        lcd_string(state_dict[state_key]['team1Name'] + " won!", LCD_LINE_2)
+        #time.sleep(3)
+
+    elif team2Points == winningScore:
+        #print("team 2 one won")
+        lcd_string("We have a winner!", LCD_LINE_1)
+        lcd_string(state_dict[state_key]['team2Name'] + " won!", LCD_LINE_2)
+        #time.sleep(3)
+    
+    else:
+        #print("show scores")
+        lcd_string(state_dict[state_key]['team1Name'] + " > " + team1Points, LCD_LINE_1)
+        lcd_string(state_dict[state_key]['team2Name'] + " > " + team2Points, LCD_LINE_2)
+
+    #elif team2Points < winningScore:
+    #    print("true test 2")
+    #    lcd_string(state_dict[state_key]['team1Name'] + " > " + team1Points, LCD_LINE_1)
+    #    lcd_string(state_dict[state_key]['team2Name'] + " > " + team2Points, LCD_LINE_2)
+        
+    #elif team1Points == winningScore:
+        #print("team 1 one won")
+    #    lcd_string("We have a winner!", LCD_LINE_1)
+    #    lcd_string(state_dict[state_key]['team1Name'] + " won!", LCD_LINE_2)
+        #time.sleep(3)
     
 
 if __name__ == '__main__':

@@ -124,37 +124,51 @@ def main():
   #game = ""
 
   def stream_handler(message):
-	  print(message["event"])
-	  print(message["path"])
-    print(message["data"])
+    #print(message["event"])
+    #print(message["path"])
+    #print(message["data"])
 
-	  global game
-    global current_state = db.child("currentGames").order_by_child("pi").equal_to(True).get()
+    #global vars
+    global state_dict
+    global state_key
+    
+    current_state = db.child("currentGames").order_by_child("pi").equal_to(True).get()
 
-	  game = message["data"]
+    state_dict = dict(current_state.val())
 
-	  print(game)
+    state_list_keys = list(state_dict.keys())
 
-	  #game_info += 1
+    state_key = state_list_keys[0]
+    
+    #game = message["data"]
+    #print(game)
+    
+    #print("test", state_dict[state_key]['team1Name'])
+    #print("list", state_list)
 
-	  #print(game_info)
+    #print("test", state_dict)
+    
+
+    #game_info += 1
+
+    #print(game_info)
 
 
-	  #print("function", cool_data)
-	  #cool_data = message["data"]
+    #print("function", cool_data)
+    #cool_data = message["data"]
 
-	  #cool_data = "stuff test"
-	  #print("cool_data ", cool_data)
+    #cool_data = "stuff test"
+    #print("cool_data ", cool_data)
 
-	  #stream_data = message["data"]
+    #stream_data = message["data"]
 
-	  #data = message["data"]
-	  #get_keys = list(message["data"].keys())
-	  #keys = list(message["data"].keys())
-	  #key = get_keys[0]
-	  #print(key)
-	  #print(data[keys[0]]['team1Name'])
-	  #print(data[keys[0]]['team2Name'])
+    #data = message["data"]
+    #get_keys = list(message["data"].keys())
+    #keys = list(message["data"].keys())
+    #key = get_keys[0]
+    #print(key)
+    #print(data[keys[0]]['team1Name'])
+    #print(data[keys[0]]['team2Name'])
 
 
   #team1Name = ""
@@ -183,20 +197,20 @@ def main():
     #lcd_string("> Tutorial Url:",LCD_LINE_1)
     #lcd_string("> http://osoyoo.com",LCD_LINE_2)
 
-    #time.sleep(3)
+    time.sleep(3)
 
     #lcd_string("Hey         <",LCD_LINE_1)
     #lcd_string("Test        <",LCD_LINE_2)
 
-    #lcd_string(cool_data + "Hey         <", LCD_LINE_1)
-    #lcd_string(cool_data, LCD_LINE_2)
+    lcd_string(state_dict[state_key]['team1Name'], LCD_LINE_1)
+    lcd_string(state_dict[state_key]['team2Name'], LCD_LINE_2)
 
-    time.sleep(10)
+    #time.sleep(3)
 
-    print("game_info", game)
-    print("state", current_state)
+    #print("game_info", state_dict[state_key]['team1Name'])
+    #print("state", current_state)
 
-    time.sleep(2)
+    #time.sleep(2)
 
 
 

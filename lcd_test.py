@@ -200,28 +200,27 @@ def main():
     #time.sleep(3)
 
     # my code below
-    
-    #lcd_string("Hey         <",LCD_LINE_1)
-    #lcd_string("Test        <",LCD_LINE_2)
 
-    lcd_string(state_dict[state_key]['team1Name'] + ">", LCD_LINE_1)
-    lcd_string(str(state_dict[state_key]['team1Points']) + ">", LCD_LINE_2)
+    #lcd_string(state_dict[state_key]['team1Name'] + ">", LCD_LINE_1)
+    #lcd_string(str(state_dict[state_key]['team1Points']) + ">", LCD_LINE_2)
 
-    time.sleep(3)
+    #time.sleep(3)
     #lcd_string(" ", LCD_LINE_1)
     #time.sleep(2)
     
-    lcd_string(state_dict[state_key]['team2Name'] + ">", LCD_LINE_1)
-    lcd_string(str(state_dict[state_key]['team2Points']) + ">", LCD_LINE_2)
+    #lcd_string(state_dict[state_key]['team2Name'] + ">", LCD_LINE_1)
+    #lcd_string(str(state_dict[state_key]['team2Points']) + ">", LCD_LINE_2)
 
-    time.sleep(3)
+    #time.sleep(3)
 
-    #print("game_info", state_dict[state_key]['team1Name'])
-    #print("state", current_state)
+    # no sleep display
+    #lcd_string(state_dict[state_key]['team1Name'] + " > " + str(state_dict[state_key]['team1Points']) , LCD_LINE_1)
+    team1Points = str(state_dict[state_key]['team1Points'])
+    team2Points = str(state_dict[state_key]['team2Points'])
 
-    #time.sleep(2)
-
-
+    lcd_string(state_dict[state_key]['team1Name'] + " > " + team1Points, LCD_LINE_1)
+    lcd_string(state_dict[state_key]['team2Name'] + " > " + team2Points, LCD_LINE_2)
+    
 
 if __name__ == '__main__':
 
